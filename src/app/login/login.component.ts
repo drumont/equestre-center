@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
+import {User} from '../_models/user';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
 
     if (val.email && val.password) {
       this.authService.login(val.email, val.password)
-        .subscribe(() => {
+        .subscribe((user: User) => {
+            console.log(user);
             console.log('User is logged in');
             this.router.navigate(['dashboard']);
           });

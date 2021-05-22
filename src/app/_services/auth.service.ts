@@ -19,7 +19,7 @@ export class AuthService {
 
   login(email: string, password: string ): Observable<any> {
     // @ts-ignore
-    return this.http.post<User>(this.loginUrl, {email, password})
+    return this.http.post<any>(this.loginUrl, {email, password})
       .pipe(
         // catchError(this.handleError<User>('getHeroes', []))
         tap(
